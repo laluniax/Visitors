@@ -1,0 +1,34 @@
+[
+  {
+    "createDate": "2023-11-03T02:07:09.423Z",
+    "id": "1",
+    "Nickname": "Rosa",
+    "avatar": "https://img.freepik.com/premium-vector/avatar-profile-icon_188544-4755.jpg",
+    "Comment": "Oppa 끝말잇기해요 나부터 시작할게 해질녘",
+    "WriteTo": "태양"
+  },
+  {
+    "createDate": "2023-11-02T11:25:37.026Z",
+    "id": "2",
+    "Nickname": "Jennifer",
+    "avatar": "https://img.freepik.com/premium-vector/avatar-profile-icon_188544-4755.jpg",
+    "Comment": "GD ㅎㅇ ",
+    "WriteTo": "지디"
+  },
+  {
+    "createDate": "2023-11-02T16:06:34.150Z",
+    "id": "3",
+    "Nickname": "DaesungLOvE",
+    "avatar": "https://img.freepik.com/premium-vector/avatar-profile-icon_188544-4755.jpg",
+    "Comment": "공",
+    "WriteTo": "대성"
+  },
+  {
+    "createDate": "2023-11-03T05:40:17.575Z",
+    "id": "4",
+    "Nickname": "Judy",
+    "avatar": "https://img.freepik.com/premium-vector/avatar-profile-icon_188544-4755.jpg",
+    "Comment": "커피 한 잔 할래요옹",
+    "WriteTo": "탑"
+  }
+]

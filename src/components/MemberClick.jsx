@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const MemberBox = styled.div`
@@ -20,19 +20,45 @@ const MemberName = styled.button`
 
   &:hover {
     color: rgba(255, 253, 252, 100);
-    background-color: ${(props) => props.BackgroundColor};
+    background-color: ${function (props) {
+      switch (props.idx) {
+        case 0:
+          return "#79cc39";
+        case 1:
+          return "#fc7351";
+        case 2:
+          return "#515ffc";
+        case 3:
+          return "#000000";
+      }
+    }};
+
     font-weight: 30;
+    cursor: pointer;
   }
 `;
 
 function MemberClick() {
+  const bigBangArr = ["태양", "G-DRAGON", "대성", "T.O.P"];
+  const [mouseOver, setMouseOver] = useState();
   return (
     <MemberBox>
-      {/* 멤버들 버튼 클릭하면 그에 맞는 댓글 나오게 */}
-      <MemberName BackgroundColor="#79cc39">태양</MemberName>
+      {bigBangArr.map(function (member, idx) {
+        return (
+          <MemberName
+            idx={mouseOver}
+            onMouseOver={() => setMouseOver(idx)}
+            onMouseOut={() => setMouseOver(null)}
+          >
+            {member}
+          </MemberName>
+        );
+      })}
+
+      {/* <MemberName BackgroundColor="#79cc39">태양</MemberName>
       <MemberName BackgroundColor="#fc7351">G-DRAGON</MemberName>
       <MemberName BackgroundColor="#515ffc">대성</MemberName>
-      <MemberName BackgroundColor="#000000">T.O.P</MemberName>
+      <MemberName BackgroundColor="#000000">T.O.P</MemberName> */}
     </MemberBox>
   );
 }

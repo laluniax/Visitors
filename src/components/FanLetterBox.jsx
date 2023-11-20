@@ -1,64 +1,133 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import uuid from "react-uuid";
 
+// import SampleFanLetter from "/Users/a1234/Desktop/visitors/visitors/src/db/fakeData.json";
+//팬레터 입력 박스
 const LetterBox = styled.div`
   border: 2px solid #000;
   align-items: center;
   width: 30rem;
-  height: 20rem;
+  height: 17rem;
   //가운데 정렬
   margin: 0 auto;
 `;
 
-const MemberBox = styled.div`
-  border: 2px solid red;
-  text-align: center;
-`;
-
-const MemberName = styled.span`
-  margin-left: 3rem;
-`;
-
-const LetterTxt = styled.div`
-  display: flex;
-  margin-left: 20px;
+// 인풋 박스
+const InputBox = styled.div`
   margin-top: 20px;
 `;
 
-const SelectBbName = styled.select`
-  width: 10rem;
-  height: 2rem;
-  color: red;
+const LetterForm = styled.form`
+  font-family: "Diphylleia", serif;
+  text-align: center;
+  font-size: 28px;
+  margin-left: 20px;
+  margin-top: 8px;
+`;
+// 인풋 스타일
+const Input = styled.input`
+  width: 14rem ${(props) => props.width};
+  height: 40px;
+  border-radius: 15px;
+  margin-top: 6px;
+  margin-right: 30px;
+  font-size: 16px;
 `;
 
-function FanLetterBox() {
+// Select 스타일
+const SelectBbName = styled.select`
+  border-radius: 6px;
+  width: 8rem;
+  height: 2rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  color: ${(props) => props.Color};
+`;
+
+const Registration = styled.button`
+  all: unset;
+  font-family: "Diphylleia", serif;
+  justify-content: center;
+  display: flex;
+  border-radius: 13px;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 20px;
+  margin-top: 2.6rem;
+  margin-left: 19rem;
+
+  &:hover {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+function FanLetterBox({ SampleFl, setSampleFl, mappedSampleFL }) {
+  // input 기능
+  const [NickName, setNickName] = useState("");
+  const [Comment, setComment] = useState("");
+  const [date, setDate] = useState("");
+  const [WriteTo, setWriteTo] = useState("");
+
   return (
     <container>
       <LetterBox>
         <div>
           <SelectBbName>
-            <option value="">태양</option>
-            <option value="">G-DRAGON</option>
-            <option value="">대성</option>
-            <option value="">T.O.P</option>
+            <option Color="#79cc39">태양</option>
+            <option value="" Color="#fc7351">
+              G-DRAGON
+            </option>
+            <option value="" Color="#515ffc">
+              대성
+            </option>
+            <option value="" Color="#000000">
+              T.O.P
+            </option>
           </SelectBbName>
         </div>
-        <LetterTxt>
-          Nickname : <input type="" />
-        </LetterTxt>
-        <LetterTxt>
-          Comment : <input type="" />
-        </LetterTxt>
-        <button>등록버튼</button>
+        <InputBox>
+          <LetterForm
+            onSubmit={(event) => {
+              event.preventDefault();
+              const newLetter = {
+                id: uuid(),
+                NickName: NickName,
+                Date: date,
+                WriteTo: WriteTo,
+                Comment: Comment,
+              };
+              console.log(newLetter);
+              setSampleFl([...SampleFl, newLetter]);
+            }}
+          >
+            Nickname :
+            <Input
+              value={NickName}
+              type=""
+              width="13rem"
+              placeholder=" 여기에 닉네임 입력"
+              onChange={(event) => {
+                setNickName(event.target.value);
+              }}
+            ></Input>
+            Comment :
+            <Input
+              type=""
+              value={Comment}
+              onChange={(event) => {
+                setComment(event.target.value);
+              }}
+              placeholder=" 여기에 코멘트 입력"
+            ></Input>
+            <Registration type="submit">Registration</Registration>
+          </LetterForm>
+        </InputBox>
       </LetterBox>
     </container>
   );
 }
 
 export default FanLetterBox;
-
-// 11/14 화요일에 할 것
-// 등록버튼 수정 및 나머지 Css 완성
-
-// 11/ 13 어려웠던 점
-//
